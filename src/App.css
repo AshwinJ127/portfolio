@@ -1,42 +1,123 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* app.css — modern theme utilities and animations */
+
+/* 1) Fonts: Inter for modern look */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #ffffff;
+  --text: #333333;
+  --heading: #111111;
+  --card: #f0f0f0;
+  --accent: #ff6b35;
+  --accent-strong: #e63946;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--text);
 }
 
-@keyframes logo-spin {
+/* Smooth scrolling and anchor offset */
+html { scroll-behavior: smooth; }
+[data-section] { scroll-margin-top: 88px; }
+
+/* 2) Subtle grid background for light */
+.bg-grid {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: -12px -12px;
+}
+
+/* 3) Animated gradient ring glow */
+.ring-glow {
+  position: relative;
+}
+.ring-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--accent), var(--accent-strong), var(--accent), var(--accent-strong), var(--accent)
+  );
+  filter: blur(18px);
+  opacity: 0.18;
+  z-index: 0;
+  border-radius: 16px;
+}
+
+/* 4) Section reveal + float animations */
+@keyframes fadeInUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(12px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+.animate-fadeIn {
+  animation: fadeInUp 600ms ease-out forwards;
+}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
   }
 }
-
-.card {
-  padding: 2em;
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
-.read-the-docs {
-  color: #888;
+/* 5) Shimmer underline accent */
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.shimmer-underline {
+  background: linear-gradient(90deg, var(--accent), var(--accent-strong), var(--accent));
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* 6) Mobile menu slide */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slideDown { animation: slideDown 220ms ease-out forwards; }
+
+/* 7) Thin black borders */
+.thin-border {
+  border: 1px solid var(--heading);
+}
+
+/* 8) Button energetic hover gradient */
+.hover-energize {
+  transition: background 220ms ease, color 220ms ease, opacity 220ms ease;
+}
+.hover-energize:hover {
+  background-image: linear-gradient(90deg, var(--accent), var(--accent-strong));
+  color: #ffffff;
+}
+
+/* Outline button */
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--heading);
+}
+.btn-outline:hover {
+  background-image: linear-gradient(90deg, var(--accent), var(--accent-strong));
+  color: #ffffff;
+  border-color: transparent;
 }
