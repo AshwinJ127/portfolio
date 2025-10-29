@@ -69,8 +69,7 @@ const AboutMePage = () => (
     <div className="mt-8 grid md:grid-cols-3 gap-6 items-start">
       <div className="md:col-span-2 rounded-2xl p-6 md:p-8 thin-border" style={{ background: 'var(--card)', maxHeight: 'none' }}>
         <p className="leading-relaxed" style={{ color: 'var(--text)' }}>
-          Add your background, interests, and the problems you love to solve. Keep it human,
-          specific, and concise. You can later swap this copy with your own.
+          I'm a Computer Science student at UCLA specializing in full-stack development and machine learning. As the current CTO of Flock, I lead the end-to-end development of a real-time rideshare application, architecting the system using React, Node.js, and SQL. My background also includes AI research, where I engineered Python data pipelines and built predictive models using scikit-learn and TensorFlow. I am a proactive problem-solver, passionate about building scalable, data-driven applications from concept to production.
         </p>
       </div>
       <div className="rounded-2xl p-6 md:p-8 thin-border" style={{ background: 'var(--card)' }}>
