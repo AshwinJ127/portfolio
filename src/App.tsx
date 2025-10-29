@@ -76,9 +76,16 @@ const AboutMePage = () => (
       <div className="rounded-2xl p-6 md:p-8 thin-border" style={{ background: 'var(--card)' }}>
         <h3 className="font-semibold" style={{ color: 'var(--heading)' }}>Tech</h3>
         <ul className="mt-3 space-y-2 text-sm" style={{ color: 'var(--text)' }}>
-          <li>React, TypeScript</li>
-          <li>Node, APIs</li>
-          <li>Design Systems</li>
+          <li>Python</li>
+          <li>Java</li>
+          <li>React</li>
+          <li>Node.js</li>
+          <li>SQL</li>
+          <li>TensorFlow</li>
+          <li>scikit-learn</li>
+          <li>Docker</li>
+          <li>CI/CD</li>
+          <li>Git</li>
         </ul>
       </div>
     </div>
