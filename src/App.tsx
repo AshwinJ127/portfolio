@@ -90,23 +90,55 @@ const AboutMePage = () => (
     </div>
   </section>
 );
+
+const projects = [
+  {
+    id: 1,
+    title: "Flock (Real-Time Rideshare App)",
+    description: "As CTO, I lead the full-stack development of a real-time student rideshare application, designing and implementing key features like ride posting, location-based search, and live in-app messaging.",
+    tags: ["React", "TypeScript", "SQL", "WebSockets", "TailwindCSS"] 
+    //
+  },
+  {
+    id: 2,
+    title: "Python Code Quality Analyzer",
+    description: "Engineered a command-line tool to evaluate Python code quality using metrics like cyclomatic complexity. It integrates AST analysis and the Radon library to parse and score code files.",
+    tags: ["Python", "AST", "Radon", "CLI"]
+    //
+  },
+  {
+    id: 3,
+    title: "NBA Games Website",
+    description: "Designed and built a responsive website featuring three interactive NBA games. I implemented all dynamic gameplay logic using vanilla JavaScript and styled the UI with CSS for a clean, modern user experience.",
+    tags: ["JavaScript", "HTML5", "CSS", "Netlify"]
+    //
+  }
+];
+
 const ProjectsPage = () => (
+
   <section id="projects" className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-24 animate-fadeIn">
     <h2 className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--heading)' }}>
       Selected <span className="underline decoration-[var(--accent)] decoration-4 underline-offset-8">Projects</span>
     </h2>
     <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[1,2,3].map((i) => (
-        <article key={i} className="group rounded-2xl thin-border transition overflow-hidden" style={{ background: 'var(--card)' }}>
+      {projects.map((project) => (
+        <article key={project.id} className="group rounded-2xl thin-border transition overflow-hidden" style={{ background: 'var(--card)' }}>
           <div className="h-32" style={{ background: 'linear-gradient(135deg, rgba(255,107,53,0.15), rgba(230,57,70,0.12))' }} />
           <div className="p-5">
-            <h3 className="font-semibold" style={{ color: 'var(--heading)' }}>Project {i}</h3>
+            <h3 className="font-semibold" style={{ color: 'var(--heading)' }}>{project.title}</h3>
             <p className="mt-2 text-sm" style={{ color: 'var(--text)' }}>
-              Short project description. Replace with your real work.
+              {project.description}
             </p>
-            <div className="mt-4 flex items-center gap-3 text-xs" style={{ color: 'var(--text)' }}>
-              <span className="px-2 py-1 rounded-md" style={{ background: '#ffffff', border: '1px solid #1111111a' }}>React</span>
-              <span className="px-2 py-1 rounded-md" style={{ background: '#ffffff', border: '1px solid #1111111a' }}>TypeScript</span>
+            {/* This div now dynamically maps over each project's tags.
+              I've added 'flex-wrap' to handle multiple tags.
+            */}
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-xs" style={{ color: 'var(--text)' }}>
+              {project.tags.map((tag) => (
+                <span key={tag} className="px-2 py-1 rounded-md" style={{ background: '#ffffff', border: '1px solid #1111111a' }}>
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
         </article>
