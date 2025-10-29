@@ -121,3 +121,13 @@ html { scroll-behavior: smooth; }
   color: #ffffff;
   border-color: transparent;
 }
+
+/* Pill link hover animation */
+.pill {
+  transition: transform 160ms ease, box-shadow 220ms ease, background 220ms ease, color 160ms ease;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+.pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(255,107,53,0.18);
+}

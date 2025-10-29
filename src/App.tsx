@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import type { ElementType, Dispatch, SetStateAction } from 'react';
-import { Home, User, Code, Briefcase, Rocket, Mail, Menu, X } from 'lucide-react';
+import { Home, User, Code, Briefcase, Rocket, Mail, Menu, X, Github, Linkedin, Copy, ExternalLink } from 'lucide-react';
 
 // --- NEW: Import the CSS file ---
 import './App.css';
+
+import profileImage from './assets/profile.JPG'; // adjust path
+
 
 // --- Section Components ---
 const HomePage = () => (
@@ -17,12 +20,12 @@ const HomePage = () => (
             Open to opportunities
           </div>
           <h1 className="mt-4 text-5xl md:text-7xl font-extrabold tracking-tight" style={{ color: 'var(--heading)' }}>
-            Building delightful web experiences
+            UCLA Computer Science Student
           </h1>
           <p className="mt-6 text-lg md:text-xl max-w-xl" style={{ color: 'var(--text)' }}>
-            A clean, modern portfolio scaffold you can fill with your story,
-            projects, and ambitions. Thoughtful motion, bold type, and elegant
-            details.
+            Strong background in programming fundamentals, DSA, web dev, and AI. 
+            Passion for building projects with an impact on daily lives.
+            Committed to learning and growing as a developer every day.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#projects" className="rounded-lg text-white font-semibold px-4 py-2 hover-energize"
@@ -35,12 +38,23 @@ const HomePage = () => (
             </a>
           </div>
         </div>
-        <div className="relative h-64 md:h-[28rem] rounded-2xl ring-glow">
+        <div className="relative h-64 md:h-[28rem] rounded-2xl ring-glow overflow-hidden">
+          {/* gradient overlay */}
           <div className="absolute inset-0 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(255,107,53,0.12), rgba(230,57,70,0.10))' }} />
-          <div className="absolute inset-6 rounded-xl" style={{ background: '#ffffff', border: '1px solid #1111111a' }} />
-          <div className="absolute inset-0 grid place-items-center">
+
+          {/* main white card with border */}
+          <div className="absolute inset-0 m-6 rounded-xl overflow-hidden border border-black/10 bg-white flex items-center justify-center">
+            <img 
+              src={profileImage} 
+              alt="Profile" 
+              className="object-cover w-full h-full rounded-xl" 
+            />
+          </div>
+
+          {/* floating gradient effect (optional) */}
+          <div className="absolute inset-0 grid place-items-center pointer-events-none">
             <div className="size-40 md:size-56 rounded-full blur-2xl animate-float"
-                 style={{ background: 'radial-gradient(circle at 30% 30%, rgba(255,107,53,0.35), rgba(230,57,70,0.25))' }} />
+                style={{ background: 'radial-gradient(circle at 30% 30%, rgba(255,107,53,0.35), rgba(230,57,70,0.25))' }} />
           </div>
         </div>
       </div>
@@ -126,29 +140,108 @@ const FuturePlansPage = () => (
     </div>
   </section>
 );
-const ContactPage = () => (
+const ContactPage = () => {
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const showCopied = (id: string, text: string) => {
+    navigator.clipboard?.writeText(text).catch(() => {});
+    setCopiedId(id);
+    window.setTimeout(() => setCopiedId((c) => (c === id ? null : c)), 1200);
+  };
+
+  return (
   <section id="contact" className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24 animate-fadeIn">
     <h2 className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--heading)' }}>Contact</h2>
-    <div className="mt-8 grid md:grid-cols-2 gap-6">
-      <form className="rounded-2xl p-6 thin-border" style={{ background: 'var(--card)' }}>
-        <div className="grid gap-4">
-          <input placeholder="Your name" className="w-full rounded-lg px-3 py-2 placeholder:text-[#888] focus:outline-none" style={{ background: '#ffffff', border: '1px solid #1111111a', color: 'var(--heading)' }} />
-          <input placeholder="Email" className="w-full rounded-lg px-3 py-2 placeholder:text-[#888] focus:outline-none" style={{ background: '#ffffff', border: '1px solid #1111111a', color: 'var(--heading)' }} />
-          <textarea rows={4} placeholder="Message" className="w-full rounded-lg px-3 py-2 placeholder:text-[#888] focus:outline-none" style={{ background: '#ffffff', border: '1px solid #1111111a', color: 'var(--heading)' }} />
-          <button type="button" className="mt-2 rounded-lg text-white font-semibold px-4 py-2 hover-energize" style={{ background: 'var(--accent)' }}>Send</button>
-        </div>
-      </form>
-      <div className="rounded-2xl p-6 thin-border" style={{ background: 'var(--card)' }}>
-        <h3 className="font-semibold" style={{ color: 'var(--heading)' }}>Links</h3>
-        <ul className="mt-3 space-y-2 text-sm" style={{ color: 'var(--text)' }}>
-          <li>GitHub</li>
-          <li>LinkedIn</li>
-          <li>Email</li>
-        </ul>
+    <div className="mt-10 grid gap-4 sm:gap-5">
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          className="pill group relative flex-1 flex items-center justify-center gap-3 rounded-full px-6 py-4 text-lg font-semibold thin-border hover-energize"
+          style={{ background: 'var(--card)', color: 'var(--heading)' }}
+          aria-label="Copy GitHub URL"
+          onClick={() => showCopied('github', 'https://github.com/AshwinJ127')}
+        >
+          <Github className="w-5 h-5" /> github.com/AshwinJ127
+          <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <span
+            className="absolute -top-3 right-3 text-xs rounded-full px-2 py-0.5"
+            style={{ background: 'var(--accent)', color: '#ffffff', opacity: copiedId === 'github' ? 1 : 0, transition: 'opacity 160ms ease' }}
+          >
+            Copied!
+          </span>
+        </button>
+        <a
+          href="https://github.com/AshwinJ127"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-full px-4 py-3 text-base font-semibold btn-outline thin-border flex items-center gap-2"
+          aria-label="Open GitHub in new tab"
+        >
+          <ExternalLink className="w-4 h-4" />
+        </a>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          className="pill group relative flex-1 flex items-center justify-center gap-3 rounded-full px-6 py-4 text-lg font-semibold thin-border hover-energize"
+          style={{ background: 'var(--card)', color: 'var(--heading)' }}
+          aria-label="Copy LinkedIn URL"
+          onClick={() => showCopied('linkedin', 'https://www.linkedin.com/in/ashwinj127')}
+        >
+          <Linkedin className="w-5 h-5" /> linkedin.com/in/ashwinj127
+          <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <span
+            className="absolute -top-3 right-3 text-xs rounded-full px-2 py-0.5"
+            style={{ background: 'var(--accent)', color: '#ffffff', opacity: copiedId === 'linkedin' ? 1 : 0, transition: 'opacity 160ms ease' }}
+          >
+            Copied!
+          </span>
+        </button>
+        <a
+          href="https://www.linkedin.com/in/ashwinj127"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-full px-4 py-3 text-base font-semibold btn-outline thin-border flex items-center gap-2"
+          aria-label="Open LinkedIn in new tab"
+        >
+          <ExternalLink className="w-4 h-4" />
+        </a>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          className="pill group relative flex-1 flex items-center justify-center gap-3 rounded-full px-6 py-4 text-lg font-semibold thin-border hover-energize"
+          style={{ background: 'var(--card)', color: 'var(--heading)' }}
+          aria-label="Copy email address"
+          onClick={() => showCopied('email', 'ashwinj127@gmail.com')}
+        >
+          <Mail className="w-5 h-5" /> ashwinj127@gmail.com
+          <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <span
+            className="absolute -top-3 right-3 text-xs rounded-full px-2 py-0.5"
+            style={{ background: 'var(--accent)', color: '#ffffff', opacity: copiedId === 'email' ? 1 : 0, transition: 'opacity 160ms ease' }}
+          >
+            Copied!
+          </span>
+        </button>
+        <a
+          href="mailto:ashwinj127@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-full px-4 py-3 text-base font-semibold btn-outline thin-border flex items-center gap-2"
+          aria-label="Open email in new tab"
+        >
+          <ExternalLink className="w-4 h-4" />
+        </a>
       </div>
     </div>
+    <p className="mt-6 text-center" style={{ color: 'var(--text)' }}>
+      I’m happy to connect about internships, projects, or anything interesting you’re building.
+    </p>
   </section>
-);
+  );
+};
 // --- End of Placeholder Pages ---
 
 // --- Props type definition for NavButton ---
@@ -293,7 +386,7 @@ export default function App() {
             </div>
             <div className="flex justify-center">
               <span
-                className="text-2xl md:text-3xl font-extrabold tracking-tight select-none"
+                className="text-4xl md:text-4xl font-extrabold tracking-tight select-none"
                 style={{ color: 'var(--heading)', cursor: 'default' }}
               >
                 Ashwin Joshi
