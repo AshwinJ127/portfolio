@@ -39,23 +39,14 @@ const HomePage = () => (
           </div>
         </div>
         <div className="relative h-64 md:h-[28rem] rounded-2xl ring-glow overflow-hidden">
-          {/* gradient overlay */}
-          <div className="absolute inset-0 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(255,107,53,0.12), rgba(230,57,70,0.10))' }} />
-
           {/* main white card with border */}
-          <div className="absolute inset-0 m-6 rounded-xl overflow-hidden border border-black/10 bg-white flex items-center justify-center">
-            <img 
-              src={profileImage} 
-              alt="Profile" 
-              className="object-cover w-full h-full rounded-xl" 
+          <div className="relative max-w-sm mx-auto rounded-2xl ring-glow overflow-hidden flex items-center justify-center bg-white">
+            <img
+              src={profileImage}
+              alt="Profile"
+              className="object-contain w-full h-auto rounded-2xl"
             />
-          </div>
-
-          {/* floating gradient effect (optional) */}
-          <div className="absolute inset-0 grid place-items-center pointer-events-none">
-            <div className="size-40 md:size-56 rounded-full blur-2xl animate-float"
-                style={{ background: 'radial-gradient(circle at 30% 30%, rgba(255,107,53,0.35), rgba(230,57,70,0.25))' }} />
-          </div>
+          </div> 
         </div>
       </div>
     </div>
