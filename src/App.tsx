@@ -38,20 +38,39 @@ const HomePage = () => (
             </a>
           </div>
         </div>
-        <div className="relative h-64 md:h-[28rem] rounded-2xl ring-glow overflow-hidden">
-          {/* main white card with border */}
-          <div className="relative max-w-sm mx-auto rounded-2xl ring-glow overflow-hidden flex items-center justify-center bg-white">
+        
+        {/* --- START OF CHANGES --- */}
+
+        {/* This outer div no longer needs a fixed height or overflow.
+          We can also remove the redundant rounded-2xl and ring-glow.
+          I've added 'flex items-center justify-center' to center the card vertically
+          if the text content on the left is very tall.
+        */}
+        <div className="relative flex items-center justify-center">
+          
+          {/* This div is now the main card. 
+            It has max-w-sm to control the width, and the image's h-auto
+            will now correctly set the height without being cut off.
+            I also removed 'flex items-center justify-center' as it's not needed
+            when the img is 'w-full'.
+          */}
+          <div className="relative max-w-sm mx-auto rounded-2xl ring-glow overflow-hidden bg-white">
             <img
               src={profileImage}
               alt="Profile"
               className="object-contain w-full h-auto rounded-2xl"
             />
-          </div> 
+          </div>  
         </div>
+        
+        {/* --- END OF CHANGES --- */}
+
       </div>
     </div>
   </section>
 );
+
+
 const AboutMePage = () => (
   <section id="about" className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24 animate-fadeIn overflow-visible">
     <h2 className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--heading)' }}>
@@ -85,20 +104,13 @@ const AboutMePage = () => (
 const projects = [
   {
     id: 1,
-    title: "Flock (Real-Time Rideshare App)",
-    description: "As CTO, I lead the full-stack development of a real-time student rideshare application, designing and implementing key features like ride posting, location-based search, and live in-app messaging.",
-    tags: ["React", "TypeScript", "SQL", "WebSockets", "TailwindCSS"] 
-    //
-  },
-  {
-    id: 2,
     title: "Python Code Quality Analyzer",
     description: "Engineered a command-line tool to evaluate Python code quality using metrics like cyclomatic complexity. It integrates AST analysis and the Radon library to parse and score code files.",
     tags: ["Python", "AST", "Radon", "CLI"]
     //
   },
   {
-    id: 3,
+    id: 2,
     title: "NBA Games Website",
     description: "Designed and built a responsive website featuring three interactive NBA games. I implemented all dynamic gameplay logic using vanilla JavaScript and styled the UI with CSS for a clean, modern user experience.",
     tags: ["JavaScript", "HTML5", "CSS", "Netlify"]
