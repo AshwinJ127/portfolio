@@ -73,8 +73,9 @@ const HomePage = () => (
 
 const AboutMePage = () => {
   const technologies = [
-    'Python', 'Java', 'React', 'Node.js', 'SQL', 
-    'TensorFlow', 'scikit-learn', 'Docker', 'CI/CD', 'Git'
+    'Python', 'Java', 'SQL', 'TypeScript', 'React', 'Node.js',
+    'Git', 'Pandas', 'scikit-learn', 'AWS', 'TensorFlow', 
+    'Docker'
   ];
 
   const courses = [
@@ -88,15 +89,15 @@ const AboutMePage = () => {
         About <span className="underline decoration-[var(--accent)] decoration-4 underline-offset-8">Me</span>
       </h2>
       
-      <div className="mt-8 grid md:grid-cols-4 gap-6 items-start">
+      <div className="mt-8 grid md:grid-cols-12 gap-6 items-start">
         
-        <div className="md:col-span-2 rounded-2xl p-6 md:p-8 thin-border" style={{ background: 'var(--card)', maxHeight: 'none' }}>
+        <div className="md:col-span-5 rounded-2xl p-6 md:p-8 thin-border" style={{ background: 'var(--card)', maxHeight: 'none' }}>
           <p className="leading-relaxed" style={{ color: 'var(--text)' }}>
             I'm a Computer Science student at UCLA specializing in full-stack development and machine learning. As the current CTO of Flock, I lead the end-to-end development of a real-time rideshare application, architecting the system using React, Node.js, and SQL. My background also includes AI research, where I engineered Python data pipelines and built predictive models using scikit-learn and TensorFlow. I am a proactive problem-solver, passionate about building scalable, data-driven applications from concept to production.
           </p>
         </div>
 
-        <div className="md:col-span-1 rounded-2xl p-6 md:p-8 thin-border" style={{ background: 'var(--card)' }}>
+        <div className="md:col-span-4 rounded-2xl p-6 md:p-8 thin-border" style={{ background: 'var(--card)' }}>
           <h3 className="text-lg font-semibold" style={{ color: 'var(--heading)' }}>
             Education
           </h3>
@@ -115,8 +116,8 @@ const AboutMePage = () => {
               {courses.map((course) => (
                 <span 
                   key={course} 
-                  className="rounded-full px-3 py-1 text-xs font-medium"
-                  style={{ background: 'var(--card)', color: 'var(--text)', border: '1px solid #1111111a' }}
+                  className="rounded-full px-3 py-1 text-xs font-medium transition-all hover:shadow-md"
+                  style={{ background: 'rgba(0, 0, 0, 0.04)', color: 'var(--text)' }}
                 >
                   {course}
                 </span>
@@ -125,7 +126,7 @@ const AboutMePage = () => {
           </div>
         </div>
 
-        <div className="md:col-span-1 rounded-2xl p-6 md:p-8 thin-border" style={{ background: 'var(--card)' }}>
+        <div className="md:col-span-3 rounded-2xl p-6 md:p-8 thin-border" style={{ background: 'var(--card)' }}>
           <h3 className="text-lg font-semibold" style={{ color: 'var(--heading)' }}>
             Skills & Technologies
           </h3>
@@ -133,7 +134,7 @@ const AboutMePage = () => {
             {technologies.map((tech) => (
               <span 
                 key={tech} 
-                className="rounded-full px-3 py-1 text-sm font-medium"
+                className="rounded-full px-3 py-1 text-sm font-medium transition-transform hover:scale-105"
                 style={{ background: 'var(--accent)', color: '#ffffff' }}
               >
                 {tech}
@@ -179,9 +180,6 @@ const ProjectsPage = () => (
             <p className="mt-2 text-sm" style={{ color: 'var(--text)' }}>
               {project.description}
             </p>
-            {/* This div now dynamically maps over each project's tags.
-              I've added 'flex-wrap' to handle multiple tags.
-            */}
             <div className="mt-4 flex flex-wrap items-center gap-3 text-xs" style={{ color: 'var(--text)' }}>
               {project.tags.map((tag) => (
                 <span key={tag} className="px-2 py-1 rounded-md" style={{ background: '#ffffff', border: '1px solid #1111111a' }}>
