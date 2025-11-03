@@ -160,7 +160,14 @@ const projects = [
     id: 2,
     title: "NBA Games Website",
     description: "Designed and built a responsive website featuring three interactive NBA games. I implemented all dynamic gameplay logic using vanilla JavaScript and styled the UI with CSS for a clean, modern user experience.",
-    tags: ["JavaScript", "HTML5", "CSS", "Netlify"]
+    tags: ["JavaScript", "HTML", "CSS", "Netlify"]
+    //
+  },
+  {
+    id: 3,
+    title: "AI-Enhanced Cybersecurity Threat Detector",
+    description: "Currently developing a cybersecurity tool that leverages machine learning to identify and mitigate potential threats in real-time network traffic. Utilizing TensorFlow for model training and GitHub Actions for continuous integration and deployment.",
+    tags: ["Python", "Machine Learning", "Cybersecurity", "TensorFlow", "GitHub Actions", "CI/CD"]
     //
   }
 ];
