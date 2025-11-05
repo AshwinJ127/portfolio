@@ -11,7 +11,6 @@ import profileImage from './assets/profile.JPG'; // adjust path
 // --- Section Components ---
 const HomePage = () => (
   <section className="relative overflow-hidden" style={{ minHeight: 'calc(100vh - 80px)' }}>
-    <div className="absolute inset-0 -z-10 bg-grid opacity-40" />
     <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
       <div className="grid md:grid-cols-2 gap-10 items-center">
         <div className="animate-fadeIn">
