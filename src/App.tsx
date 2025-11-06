@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import type { ElementType, Dispatch, SetStateAction } from 'react';
-import { Home, User, Code, Briefcase, Rocket, Mail, Menu, X, Github, Linkedin, Copy, ExternalLink } from 'lucide-react';
+import { Home, User, Code, Briefcase, Rocket, Mail, Menu, X } from 'lucide-react';
 
 import './App.css';
 import HomePage from './Pages/HomePage';
