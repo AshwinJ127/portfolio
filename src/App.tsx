@@ -2,72 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import type { ElementType, Dispatch, SetStateAction } from 'react';
 import { Home, User, Code, Briefcase, Rocket, Mail, Menu, X, Github, Linkedin, Copy, ExternalLink } from 'lucide-react';
 
-// --- NEW: Import the CSS file ---
 import './App.css';
-
-import profileImage from './assets/profile.JPG'; // adjust path
+import HomePage from './Pages/HomePage';
 
 
 // --- Section Components ---
-const HomePage = () => (
-  <section className="relative overflow-hidden" style={{ minHeight: 'calc(100vh - 80px)' }}>
-    <div className="max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32">
-      <div className="grid md:grid-cols-2 gap-10 items-center">
-        <div className="animate-fadeIn">
-          <div className="inline-flex items-center gap-2 rounded-full bg-[var(--card)] thin-border px-3 py-1 text-xs md:text-sm text-[var(--heading)]/80">
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent)' }} />
-            Open to opportunities
-          </div>
-          <h1 className="mt-4 text-5xl md:text-7xl font-extrabold tracking-tight" style={{ color: 'var(--heading)' }}>
-            UCLA Computer Science Student
-          </h1>
-          <p className="mt-6 text-lg md:text-xl max-w-xl" style={{ color: 'var(--text)' }}>
-            Strong background in programming fundamentals, DSA, web dev, and AI. 
-            Passion for building projects with an impact on daily lives.
-            Committed to learning and growing as a developer every day.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#projects" className="rounded-lg text-white font-semibold px-4 py-2 hover-energize"
-               style={{ background: 'var(--accent)' }}>
-              View Projects
-            </a>
-            <a href="#contact" className="rounded-lg font-semibold px-4 py-2 thin-border btn-outline"
-               style={{ background: 'var(--card)', color: 'var(--heading)' }}>
-              Get in touch
-            </a>
-          </div>
-        </div>
-        
-        {/* --- START OF CHANGES --- */}
-
-        {/* This outer div no longer needs a fixed height or overflow.
-          We can also remove the redundant rounded-2xl and ring-glow.
-          I've added 'flex items-center justify-center' to center the card vertically
-          if the text content on the left is very tall.
-        */}
-        <div className="relative flex items-center justify-center">
-          
-          {/* This div is now the main card. 
-            It has max-w-sm to control the width, and the image's h-auto
-            will now correctly set the height without being cut off.
-            I also removed 'flex items-center justify-center' as it's not needed
-            when the img is 'w-full'.
-          */}
-          <div className="relative max-w-sm mx-auto rounded-2xl ring-glow overflow-hidden bg-white">
-            <img
-              src={profileImage}
-              alt="Profile"
-              className="object-contain w-full h-auto rounded-2xl"
-            />
-          </div>  
-        </div>
-        
-        {/* --- END OF CHANGES --- */}
-
-      </div>
-    </div>
-  </section>
-);
 
 
 const AboutMePage = () => {
