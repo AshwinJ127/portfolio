@@ -2,10 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Copy, ExternalLink, Mail } from 'lucide-react';
 import { createPortal } from 'react-dom';
 
-const ContactPage = () => {
-  const [tooltip, setTooltip] = useState(null); // {id, x, y, text}
+interface TooltipState {
+  id: string;
+  x: number;
+  y: number;
+  text: string;
+}
 
-  const copyToClipboard = (text) => {
+const ContactPage: React.FC = () => {
+  const [tooltip, setTooltip] = useState<TooltipState | null>(null);
+
+  const copyToClipboard = (text: string) => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text).catch(() => fallbackCopyTextToClipboard(text));
     } else {
@@ -13,7 +20,7 @@ const ContactPage = () => {
     }
   };
 
-  const fallbackCopyTextToClipboard = (text) => {
+  const fallbackCopyTextToClipboard = (text: string) => {
     const textArea = document.createElement('textarea');
     textArea.value = text;
     textArea.style.position = 'fixed';
@@ -28,54 +35,68 @@ const ContactPage = () => {
     document.body.removeChild(textArea);
   };
 
-  const showCopied = (id, text, e) => {
+  const showCopied = (
+    id: string,
+    text: string,
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
     copyToClipboard(text);
     const rect = e.currentTarget.getBoundingClientRect();
     setTooltip({
       id,
-      x: rect.right - 35, // a little closer to the button
-      y: rect.top + 10,   // slightly lower to overlap button
+      x: rect.right - 35,
+      y: rect.top + 10,
       text: 'Copied!',
     });
-    setTimeout(() => setTooltip(null), 1800); // stays longer
+    // --- CHANGED ---
+    // Hide the component after 2.5s (was 1.8s)
+    setTimeout(() => setTooltip(null), 2500);
   };
 
-  const Tooltip = ({ tooltip }) => {
+  interface TooltipProps {
+    tooltip: TooltipState | null;
+  }
+
+  const Tooltip: React.FC<TooltipProps> = ({ tooltip }) => {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
       if (tooltip) {
         setVisible(true);
-        const hide = setTimeout(() => setVisible(false), 1500);
+        // --- CHANGED ---
+        // Start the fade-out at 2s (was 1.5s)
+        const hide = setTimeout(() => setVisible(false), 2000);
         return () => clearTimeout(hide);
       }
     }, [tooltip]);
 
     if (!tooltip) return null;
 
+    const tooltipStyle: React.CSSProperties = {
+      position: 'fixed',
+      left: tooltip.x,
+      top: tooltip.y,
+      transform: visible
+        ? 'translate(-50%, -110%) scale(1)'
+        : 'translate(-50%, -100%) scale(0.9)',
+      opacity: visible ? 1 : 0,
+      background: 'var(--accent)',
+      color: '#fff',
+      padding: '4px 10px',
+      borderRadius: '9999px',
+      fontSize: '0.75rem',
+      fontWeight: '500',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+      zIndex: 99999,
+      pointerEvents: 'none',
+      // --- CHANGED ---
+      // Make the transition take 0.5s (was 0.3s)
+      transition:
+        'opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+    };
+
     return createPortal(
-      <div
-        style={{
-          position: 'fixed',
-          left: tooltip.x,
-          top: tooltip.y,
-          transform: visible
-            ? 'translate(-50%, -110%) scale(1)'
-            : 'translate(-50%, -100%) scale(0.9)',
-          opacity: visible ? 1 : 0,
-          background: 'var(--accent)',
-          color: '#fff',
-          padding: '4px 10px',
-          borderRadius: '9999px',
-          fontSize: '0.75rem',
-          fontWeight: '500',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-          zIndex: 99999,
-          pointerEvents: 'none',
-          transition:
-            'opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-        }}
-      >
+      <div style={tooltipStyle}>
         {tooltip.text}
       </div>,
       document.body
