@@ -1,26 +1,21 @@
-import React from 'react';
-
 const projects = [
   {
     id: 1,
-    title: "Python Code Quality Analyzer",
-    description: "Engineered a command-line tool to evaluate Python code quality using metrics like cyclomatic complexity. It integrates AST analysis and the Radon library to parse and score code files.",
-    tags: ["Python", "AST", "Radon", "CLI"]
-    //
+    title: "AI Cybersecurity Threat Detector",
+    description: "Built an AI-driven system identifying malicious network behavior with 90+% precision. Designed a real-time pipeline using Kafka and FastAPI capable of processing 12,000+ events/sec, visualized on a React dashboard.",
+    tags: ["Python", "LightGBM", "Kafka", "FastAPI", "React"]
   },
   {
     id: 2,
-    title: "NBA Games Website",
-    description: "Designed and built a responsive website featuring three interactive NBA games. I implemented all dynamic gameplay logic using vanilla JavaScript and styled the UI with CSS for a clean, modern user experience.",
-    tags: ["JavaScript", "HTML", "CSS", "Netlify"]
-    //
+    title: "rfx Modern Git Client",
+    description: "Architected a version control tool featuring a Rust CLI and React/Tauri GUI. implemented a shared FFI backend to achieve a <2MB binary footprint and a Smart Sync system to prevent atomic merge conflicts.",
+    tags: ["Rust", "Tauri", "TypeScript", "React", "Git"]
   },
   {
     id: 3,
-    title: "AI-Enhanced Cybersecurity Threat Detector",
-    description: "Currently developing a cybersecurity tool that leverages machine learning to identify and mitigate potential threats in real-time network traffic. Utilizing TensorFlow for model training and GitHub Actions for continuous integration and deployment.",
-    tags: ["Python", "Machine Learning", "Cybersecurity", "TensorFlow", "GitHub Actions", "CI/CD"]
-    //
+    title: "Python Code Quality Analyzer",
+    description: "Engineered a CLI tool to evaluate Python code quality using AST parsing and Radon metrics. Features stylized terminal output using Rich and seamless CI/CD integration for automated pull request quality checks.",
+    tags: ["Python", "AST", "Radon", "Rich", "CI/CD"]
   }
 ];
 
