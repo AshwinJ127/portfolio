@@ -1,4 +1,3 @@
-import React from 'react';
 
 const FuturePlansPage = () => (
   <section id="future" className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-24 animate-fadeIn">
