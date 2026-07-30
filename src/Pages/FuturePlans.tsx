@@ -8,10 +8,7 @@ const FuturePlansPage = () => (
           I am currently deepening my expertise in <strong style={{ color: 'var(--accent)' }}>Systems Programming (Rust/C++)</strong> and <strong style={{ color: 'var(--accent)' }}>Distributed Infrastructure</strong>, aiming to architect lower-latency, high-performance applications.
         </p>
         <p>
-          Simultaneously, I am scaling my <strong style={{ color: 'var(--accent)' }}>MLOps capabilities</strong> by moving my local cybersecurity models to cloud-native deployments using Docker, Kubernetes, and AWS.
-        </p>
-        <p>
-          I am actively seeking <strong style={{ color: 'var(--accent)' }}>Software Engineering Internships for Summer 2026</strong> where I can apply my experience in backend systems, security engineering, and full-stack development to solve complex problems at scale.
+          I am actively seeking <strong style={{ color: 'var(--accent)' }}>Software Engineering Internships for Summer 2027</strong>, where I can apply what I built at Tesla, Flock, and the UCLA BioCybernetics Lab to backend systems and security engineering at scale.
         </p>
       </div>
     </div>

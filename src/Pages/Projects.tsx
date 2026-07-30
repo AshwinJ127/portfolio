@@ -2,13 +2,13 @@ const projects = [
   {
     id: 1,
     title: "AI Cybersecurity Threat Detector",
-    description: "Built an AI-driven system identifying malicious network behavior with 90+% precision. Designed a real-time pipeline using Kafka and FastAPI capable of processing 12,000+ events/sec, visualized on a React dashboard.",
+    description: "Built a real-time network traffic classifier using a 15-class LightGBM model on a 70-feature vector, achieving 99.89% accuracy and 92.13% precision on malicious versus benign classification. Designed an event-driven pipeline streaming traffic through Kafka to a FastAPI inference endpoint, broadcasting live classifications via WebSockets to a React dashboard.",
     tags: ["Python", "LightGBM", "Kafka", "FastAPI", "React"]
   },
   {
     id: 2,
     title: "rfx Modern Git Client",
-    description: "Architected a version control tool featuring a Rust CLI and React/Tauri GUI. implemented a shared FFI backend to achieve a <2MB binary footprint and a Smart Sync system to prevent atomic merge conflicts.",
+    description: "Architected a high-performance version control tool featuring a custom Rust CLI and React/Tauri GUI, using a shared FFI backend to achieve a lightweight <2MB binary footprint. Engineered a Smart Sync system that analyzes local branch topology before executing atomic git operations, preventing merge conflicts and cutting version control time by up to 50%.",
     tags: ["Rust", "Tauri", "TypeScript", "React", "Git"]
   },
   {

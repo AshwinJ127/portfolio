@@ -1,14 +1,14 @@
 
 const AboutMePage = () => {
   const technologies = [
-    'Python', 'Java', 'SQL', 'TypeScript', 'React', 'Node.js',
-    'Git', 'Pandas', 'scikit-learn', 'AWS', 'TensorFlow', 
-    'Docker'
+    'Python', 'TypeScript', 'Go', 'Rust', 'Java', 'React', 'Next.js',
+    'Node.js', 'FastAPI', 'SQL', 'PostgreSQL', 'MongoDB', 'Docker',
+    'AWS', 'TensorFlow', 'PyTorch', 'Kafka', 'Swift', 'TailwindCSS', 'Git'
   ];
 
   const courses = [
-    'Data Structures & Algorithms', 'Computer Organization', 'Logic Design',
-    'Machine Learning', 'Web Applications', 'Database Management',
+    'Data Structures & Algorithms', 'Computer Organization', 'Operating Systems',
+    'Machine Learning', 'Database Management Systems',
   ];
 
   return (
@@ -21,7 +21,7 @@ const AboutMePage = () => {
         
         <div className="md:col-span-5 rounded-2xl p-6 md:p-8 thin-border" style={{ background: 'var(--card)', maxHeight: 'none' }}>
           <p className="leading-relaxed" style={{ color: 'var(--text)' }}>
-            I'm a Computer Science student at UCLA specializing in full-stack development and machine learning. As the current CTO of Flock, I lead the end-to-end development of a real-time rideshare application, architecting the system using React, Node.js, and SQL. My background also includes AI research, where I engineered Python data pipelines and built predictive models using scikit-learn and TensorFlow. I am a proactive problem-solver, passionate about building scalable, data-driven applications from concept to production.
+            I'm a Computer Science student at UCLA specializing in full-stack development and machine learning, currently interning at Tesla where I build AI agents and internal tooling for the traffic engineering team. I founded Flock, a real time student rideshare app that has grown to hundreds of active users on the App Store, and I lead its full stack development using React, TypeScript, and WebSockets. My background also spans clinical software engineering at the UCLA BioCybernetics Lab, where I built an iOS app that cut treatment evaluation time in half, and AI research applying scikit-learn and TensorFlow to financial data. I like building applications that carry real production weight, from architecture through deployment.
           </p>
         </div>
 
@@ -34,9 +34,12 @@ const AboutMePage = () => {
               University of California, Los Angeles
             </p>
             <p className="text-sm" style={{ color: 'var(--text)' }}>
-              B.S. in Computer Science
+              B.S. in Computer Science, GPA 3.85/4.0
             </p>
-            
+            <p className="text-sm" style={{ color: 'var(--text)' }}>
+              Graduating 2028
+            </p>
+
             <p className="text-sm font-medium mt-4" style={{ color: 'var(--heading)' }}>
               Relevant Coursework:
             </p>
